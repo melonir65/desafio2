@@ -7,8 +7,8 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_participantes")
-public class Participantes {
+@Table(name = "tb_participante")
+public class Participante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +20,14 @@ public class Participantes {
 
     @ManyToMany
     @JoinTable(name = "tb_participante_atividade",
-            joinColumns = @JoinColumn(name = "participantes_id"),
+            joinColumns = @JoinColumn(name = "participante_id"),
             inverseJoinColumns = @JoinColumn(name = "atividade_id"))
     private Set<Atividade> atividades = new HashSet<>();
 
 
-    public Participantes (){}
+    public Participante(){}
 
-    public Participantes(Long id, String nome, String email) {
+    public Participante(Long id, String nome, String email) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -53,7 +53,7 @@ public class Participantes {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
 
-        Participantes that = (Participantes) o;
+        Participante that = (Participante) o;
         return Objects.equals(getId(), that.getId());
     }
 
